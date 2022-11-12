@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.vitorhr.gorestaurant.ui.login.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login_background"
+        tools:context=".ui.login.LoginActivity">
+
+        <ImageView
+            android:id="@+id/IVLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="152dp"
+            android:src="@drawable/logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/IVTitle"
+            android:layout_width="168dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/go_restaurant"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="@id/IVLogo"
+            app:layout_constraintTop_toBottomOf="@id/IVLogo" />
+
+        <TextView
+            android:id="@+id/TVSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comida Italiana, sim."
+            android:textColor="@color/slogan"
+            app:layout_constraintStart_toStartOf="@id/IVTitle"
+            app:layout_constraintTop_toBottomOf="@id/IVTitle" />
+
+        <TextView
+            android:id="@+id/TVDescription"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="Uma Verdadeira expreiência Italiana"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            app:layout_constraintStart_toStartOf="@id/TVSubTitle"
+            app:layout_constraintTop_toBottomOf="@id/TVSubTitle" />
+
+        <Button
+            android:id="@+id/BTNLogin"
+            android:layout_width="296dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="100dp"
+            android:backgroundTint="@color/common_yellow"
+            android:onClick="@{()->viewModel.loginButtonClick()}"
+            android:text="Entrar no Restaurant"
+            android:textAllCaps="false"
+            android:drawableEnd="@drawable/login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TVDescription" />
+
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/Loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.loadingVisibility}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

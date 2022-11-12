@@ -1,4 +1,4 @@
-package com.vitorhr.basicandroidsetup
+package com.vitorhr.gorestaurant
 
 import org.junit.Test
 

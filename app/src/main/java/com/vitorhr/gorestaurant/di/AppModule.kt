@@ -1,4 +1,4 @@
-package com.vitorhr.basicandroidsetup.di
+package com.vitorhr.gorestaurant.di
 
 import org.koin.dsl.module
 import retrofit2.Retrofit

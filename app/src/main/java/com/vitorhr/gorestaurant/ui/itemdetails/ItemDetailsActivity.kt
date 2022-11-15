@@ -10,6 +10,7 @@ import com.vitorhr.gorestaurant.model.AdditionalItem
 import com.vitorhr.gorestaurant.model.Dish
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import java.text.DecimalFormat
 
 class ItemDetailsActivity : AppCompatActivity() {
 
@@ -54,7 +55,8 @@ class ItemDetailsActivity : AppCompatActivity() {
         binding.TVDishTitle.text = title
         binding.TVDescription.text = description
         binding.IVDish.setImageResource(image)
-        binding.TVPrice.text = price.toString()
+        val formatter = DecimalFormat("##,##")
+        binding.TVPrice.text = formatter.format(price)
 
         val additionalItems = getAdditionalItems()
         val onDecrementClickListener = createOnDecrementClickListener()
@@ -78,11 +80,11 @@ class ItemDetailsActivity : AppCompatActivity() {
     }
 
     private fun createOnDecrementClickListener() = AdditionalClickListener { priceIncents ->
-        viewModel.totalPrice.value?.minus((priceIncents / 100))
+        viewModel.decrementFromTotalPrice(priceIncents)
     }
 
     private fun createOnIncrementClickListener() = AdditionalClickListener { priceIncents ->
-        viewModel.totalPrice.value?.plus((priceIncents / 100))
+        viewModel.incrementToTotalPrice(priceIncents)
     }
 
 

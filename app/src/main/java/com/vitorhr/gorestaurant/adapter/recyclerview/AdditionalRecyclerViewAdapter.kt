@@ -39,6 +39,7 @@ class AdditionalRecyclerViewAdapter(
             }
 
             holder.decrementButton.setOnClickListener {
+                if(holder.total.text.toString().toInt() == 0) return@setOnClickListener
                 holder.total.text = (holder.total.text.toString().toInt() - 1).toString()
                 onDecrementClickListener.onClick(priceInCents)
             }

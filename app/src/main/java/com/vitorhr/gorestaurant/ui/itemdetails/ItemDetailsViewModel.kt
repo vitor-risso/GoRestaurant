@@ -1,6 +1,6 @@
 package com.vitorhr.gorestaurant.ui.itemdetails
 
-android.content.Context
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,7 +12,7 @@ class ItemDetailsViewModel(val application: Context, private val dish: Dish) : V
 
     val title = dish.title
     val description = dish.description
-    private val price = dish.priceInCents
+    val price = dish.priceInCents
 
     private val _totalOrders = MutableLiveData("1")
     val totalOrders: LiveData<String> get() = _totalOrders

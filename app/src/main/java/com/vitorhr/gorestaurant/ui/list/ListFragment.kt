@@ -1,5 +1,6 @@
 package com.vitorhr.gorestaurant.ui.list
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.vitorhr.gorestaurant.adapter.recyclerview.DishesRecyclerViewAdapter
 import com.vitorhr.gorestaurant.databinding.FragmentListBinding
 import com.vitorhr.gorestaurant.model.Categories
 import com.vitorhr.gorestaurant.model.Dish
+import com.vitorhr.gorestaurant.ui.login.LoginActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -28,25 +30,41 @@ class ListFragment : Fragment() {
     ): View? {
         _binding = FragmentListBinding.inflate(inflater, container, false)
 
-        val categoriesItems = generateCategoriesItems()
-        val categoriesAdapter = CategoriesRecyclerViewAdapter(categoriesItems)
-        binding.RVCategories.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.RVCategories.adapter = categoriesAdapter
+        setupCategoriesAdapter()
 
-        val dishesItems = generateDishItems()
-        val dishesAdapter = DishesRecyclerViewAdapter(dishesItems, requireContext())
-        binding.RVDishes.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        binding.RVDishes.adapter = dishesAdapter
+        setUpDishesAdapter()
+
+        setUpLeaveAppButtonClickListener()
 
         return binding.root
-
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setUpLeaveAppButtonClickListener() {
+        binding.IBLogout.setOnClickListener {
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun setupCategoriesAdapter() {
+        val categoriesItems = generateCategoriesItems()
+        val categoriesAdapter = CategoriesRecyclerViewAdapter(categoriesItems)
+        binding.RVCategories.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.RVCategories.adapter = categoriesAdapter
+    }
+
+    private fun setUpDishesAdapter() {
+        val dishesItems = generateDishItems()
+        val dishesAdapter = DishesRecyclerViewAdapter(dishesItems, requireContext())
+        binding.RVDishes.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        binding.RVDishes.adapter = dishesAdapter
     }
 
     private fun generateCategoriesItems(): List<Categories> = listOf(

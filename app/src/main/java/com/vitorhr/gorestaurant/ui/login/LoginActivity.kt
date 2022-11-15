@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        _binding = ActivityLoginBinding.inflate(layoutInflater ).apply {
+        _binding = ActivityLoginBinding.inflate(layoutInflater).apply {
             viewModel = this@LoginActivity.viewModel
         }
 
@@ -34,15 +34,17 @@ class LoginActivity : AppCompatActivity() {
         super.onResume()
         setUpObservers()
     }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
 
-    private fun setUpObservers(){
-        viewModel.navigate.observe(this){
-            if(it){
+    private fun setUpObservers() {
+        viewModel.navigate.observe(this) {
+            if (it) {
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
             }
         }

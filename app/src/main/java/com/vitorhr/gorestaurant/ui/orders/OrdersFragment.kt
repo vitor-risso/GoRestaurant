@@ -1,4 +1,4 @@
-package com.vitorhr.gorestaurant.ui.list
+package com.vitorhr.gorestaurant.ui.orders
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,75 +7,35 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vitorhr.gorestaurant.R
-import com.vitorhr.gorestaurant.adapter.recyclerview.CategoriesRecyclerViewAdapter
 import com.vitorhr.gorestaurant.adapter.recyclerview.DishesRecyclerViewAdapter
-import com.vitorhr.gorestaurant.databinding.FragmentListBinding
-import com.vitorhr.gorestaurant.model.Categories
+import com.vitorhr.gorestaurant.databinding.FragmentOrdersBinding
 import com.vitorhr.gorestaurant.model.Dish
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
+class OrdersFragment : Fragment() {
 
-class ListFragment : Fragment() {
-
-    private var _binding: FragmentListBinding? = null
+    private var _binding: FragmentOrdersBinding? = null
     private val binding get() = _binding!!
-
-    private val viewModel by viewModel<ListViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentListBinding.inflate(inflater, container, false)
-
-        val categoriesItems = generateCategoriesItems()
-        val categoriesAdapter = CategoriesRecyclerViewAdapter(categoriesItems)
-        binding.RVCategories.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.RVCategories.adapter = categoriesAdapter
+        _binding = FragmentOrdersBinding.inflate(inflater, container, false)
 
         val dishesItems = generateDishItems()
-        val dishesAdapter = DishesRecyclerViewAdapter(dishesItems, requireContext())
-        binding.RVDishes.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        binding.RVDishes.adapter = dishesAdapter
+        val dishesAdapter = DishesRecyclerViewAdapter(dishesItems)
+
+        binding.RVMyOrdersDishes.layoutManager = LinearLayoutManager(requireContext())
+        binding.RVMyOrdersDishes.adapter = dishesAdapter
 
         return binding.root
-
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onDestroy() {
+        super.onDestroy()
         _binding = null
     }
 
-    private fun generateCategoriesItems(): List<Categories> = listOf(
-        Categories(
-            R.drawable.pasta_icon,
-            "Massas"
-        ),
-        Categories(
-            R.drawable.pizza_icon,
-            "Pizzas"
-        ),
-        Categories(
-            R.drawable.meat_icon,
-            "Carnes"
-        ),
-
-        Categories(
-            R.drawable.pasta_icon,
-            "Massas"
-        ),
-        Categories(
-            R.drawable.pizza_icon,
-            "Pizzas"
-        ),
-        Categories(
-            R.drawable.meat_icon,
-            "Carnes"
-        )
-    )
 
     private fun generateDishItems(): List<Dish> = listOf(
         Dish(

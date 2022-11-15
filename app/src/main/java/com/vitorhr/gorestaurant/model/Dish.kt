@@ -1,8 +1,8 @@
 package com.vitorhr.gorestaurant.model
 
-data class Dishes(
+data class Dish(
     val image: Int,
     val title: String,
     val description: String,
-    val price: String
+    val priceInCents: Int,
 )

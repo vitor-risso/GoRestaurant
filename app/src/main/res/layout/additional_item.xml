@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="328dp"
+    android:layout_height="40dp"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/round_bg"
+    android:backgroundTint="@color/background_grey">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/TVName"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center"
+        android:textColor="@color/text_color_categories_item_title"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Bacon" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/BTNDecrement"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="32dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="70dp"
+        android:background="@color/background_grey"
+        android:text="-"
+        android:textColor="@color/text_color_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/TVName" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/TVTotalItems"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+        android:background="@color/background_grey"
+        android:gravity="center"
+        android:textColor="@color/text_color_dark"
+        app:layout_constraintStart_toEndOf="@id/BTNDecrement"
+        app:layout_constraintTop_toTopOf="@id/BTNDecrement"
+        tools:text="0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/BTNIncrement"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="32dp"
+        android:layout_height="40dp"
+        android:background="@color/background_grey"
+        android:text="+"
+        android:textColor="@color/text_color_dark"
+        app:layout_constraintStart_toEndOf="@id/TVTotalItems"
+        app:layout_constraintTop_toTopOf="@id/TVTotalItems" />
+</androidx.constraintlayout.widget.ConstraintLayout>

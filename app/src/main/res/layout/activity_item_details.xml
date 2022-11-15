@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.vitorhr.gorestaurant.ui.itemdetails.ItemDetailsViewModel" />
+    </data>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.itemdetails.ItemDetailsActivity">
+
+            <View
+                android:id="@+id/VHeader"
+                android:layout_width="match_parent"
+                android:layout_height="148dp"
+                android:background="@color/common_red"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></View>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/IVArrowBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:src="@drawable/arrow_back_icon"
+                app:layout_constraintBottom_toBottomOf="@id/VHeader"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/TVTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Pratos - Massas"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/IVArrowBack" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/IBFavorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:backgroundTint="@color/common_red"
+                android:src="@drawable/favorite_icon_empty"
+                android:clickable="true"
+                app:layout_constraintBottom_toBottomOf="@id/VHeader"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/common_yellow" />
+
+            <View
+                android:id="@+id/VDish"
+                android:layout_width="328dp"
+                android:layout_height="184dp"
+                android:background="@drawable/round_bg"
+                android:backgroundTint="@color/common_yellow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/IBFavorite" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/IVDish"
+                android:layout_width="252dp"
+                android:layout_height="184dp"
+                android:background="@null"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/IBFavorite"
+                tools:src="@drawable/souce_image" />
+
+            <View
+                android:id="@+id/VDetails"
+                android:layout_width="328dp"
+                android:layout_height="180dp"
+                android:background="@drawable/round_bg"
+                android:backgroundTint="@color/background_grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/IVDish" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/TVDishTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/text_color_dark"
+                android:textStyle="bold"
+                android:text="@{viewModel.title}"
+                app:layout_constraintStart_toStartOf="@id/VDetails"
+                app:layout_constraintTop_toBottomOf="@id/IVDish"
+                tools:text='Ao Molho' />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/TVDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxWidth="280dp"
+                android:textColor="@color/text_color_dark"
+                android:textSize="16sp"
+                android:text="@{viewModel.description}"
+                app:layout_constraintStart_toStartOf="@id/TVDishTitle"
+                app:layout_constraintTop_toBottomOf="@id/TVDishTitle"
+                tools:text="Macarrão ao molho branc, fighi e cheiro verde das montanhas" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/TVReal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="R$ "
+                android:textColor="@color/text_color_categories_item_title"
+                android:textSize="24dp"
+                app:layout_constraintStart_toStartOf="@id/TVDescription"
+                app:layout_constraintTop_toBottomOf="@id/TVDescription" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/TVPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_color_categories_item_title"
+                android:textSize="24dp"
+                app:layout_constraintStart_toEndOf="@id/TVReal"
+                app:layout_constraintTop_toTopOf="@id/TVReal"
+                tools:text="19,90" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/TVAdditional"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Adicionais"
+                android:textColor="@color/text_color_dark"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/VDetails"
+                app:layout_constraintTop_toBottomOf="@id/VDetails" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/RVAdditionals"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@id/TVAdditional"
+                app:layout_constraintTop_toBottomOf="@id/TVAdditional"
+                tools:itemCount="4"
+                tools:listitem="@layout/additional_item" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/TVTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Total do pedido"
+                android:textColor="@color/text_color_dark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/RVAdditionals"
+                app:layout_constraintTop_toBottomOf="@id/RVAdditionals" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/TVTotalReal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="R$ "
+                android:textColor="@color/common_green"
+                android:textSize="24dp"
+                app:layout_constraintStart_toStartOf="@id/TVTotal"
+                app:layout_constraintTop_toBottomOf="@id/TVTotal" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/TVTotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.totalPriceString}"
+                android:textColor="@color/common_green"
+                android:textSize="24dp"
+                app:layout_constraintStart_toEndOf="@id/TVTotalReal"
+                app:layout_constraintTop_toTopOf="@id/TVTotalReal"
+                tools:text="44,80" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/BTNDecrement"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="32dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="100dp"
+                android:background="@color/background_grey"
+                android:onClick="@{() -> viewModel.decrementClick()}"
+                android:text="-"
+                android:textColor="@color/text_color_dark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/TVTotalPrice" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/TVTotalItems"
+                android:layout_width="36dp"
+                android:layout_height="40dp"
+                android:background="@color/background_grey"
+                android:gravity="center"
+                android:text="@{viewModel.totalOrders}"
+                android:textColor="@color/text_color_dark"
+                app:layout_constraintStart_toEndOf="@id/BTNDecrement"
+                app:layout_constraintTop_toTopOf="@id/BTNDecrement"
+                tools:text="0" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/BTNIncrement"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="32dp"
+                android:layout_height="40dp"
+                android:background="@color/background_grey"
+                android:onClick="@{() -> viewModel.incrementClick()}"
+                android:text="+"
+                android:textColor="@color/text_color_dark"
+                app:layout_constraintStart_toEndOf="@id/TVTotalItems"
+                app:layout_constraintTop_toTopOf="@id/TVTotalItems" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/BTNConfirmOrder"
+                android:layout_width="328dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="@color/common_green"
+                android:drawableEnd="@drawable/check_icon"
+                android:onClick="@{() -> viewModel.confirmOrderClick()}"
+                android:text="Confirmar pedido"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TVTotalPrice" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/success_icon"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

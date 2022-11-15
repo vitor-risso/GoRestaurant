@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/list_screen"
+        android:id="@+id/listFragment"
         android:enabled="true"
         android:icon="@drawable/bullet_list"
         android:title="Listagem"/>
     <item
-        android:id="@+id/orders_screen"
+        android:id="@+id/ordersFragment"
         android:enabled="true"
         android:icon="@drawable/outline_shopping_bag"
         android:title="Pedidos"/>
 
     <item
-        android:id="@+id/favorites_screen"
+        android:id="@+id/favoritesFragment"
         android:enabled="true"
         android:icon="@drawable/heart_icon"
         android:title="Favoritos"/>

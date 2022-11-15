@@ -1,5 +1,7 @@
 package com.vitorhr.gorestaurant.adapter.recyclerview
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,9 +9,11 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
 import com.vitorhr.gorestaurant.R
-import com.vitorhr.gorestaurant.model.Dishes
+import com.vitorhr.gorestaurant.model.Dish
+import com.vitorhr.gorestaurant.ui.itemdetails.ItemDetailsActivity
+import java.text.DecimalFormat
 
-class DishesRecyclerViewAdapter(val items: List<Dishes>) :
+class DishesRecyclerViewAdapter(val items: List<Dish>, val context: Context? = null) :
     RecyclerView.Adapter<DishesRecyclerViewAdapter.DishesViewHolder>() {
     class DishesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val image: AppCompatImageView = view.findViewById(R.id.IVDish)
@@ -29,7 +33,22 @@ class DishesRecyclerViewAdapter(val items: List<Dishes>) :
             holder.image.setImageResource(image)
             holder.title.text = title
             holder.description.text = description
-            holder.price.text = price
+
+            val formatter = DecimalFormat("##,##")
+
+            holder.price.text = formatter.format(priceInCents)
+
+            context?.let {
+                holder.itemView.setOnClickListener {
+                    val intent = Intent(context, ItemDetailsActivity::class.java)
+                    intent.putExtra("IMAGE_ID",image )
+                    intent.putExtra("TITLE", title)
+                    intent.putExtra("DESCRIPTION", description)
+                    intent.putExtra("ORIGINAL_PRICE", priceInCents)
+                    context.startActivity(intent)
+                }
+            }
+
         }
     }
 

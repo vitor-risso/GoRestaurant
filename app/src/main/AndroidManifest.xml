@@ -30,6 +30,14 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".ui.itemdetails.ItemDetailsActivity"
+            android:exported="false"
+            android:label="ItemDetailsActivity">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.splash.SplashActivity"
             android:exported="true"
             android:label="@string/app_name"

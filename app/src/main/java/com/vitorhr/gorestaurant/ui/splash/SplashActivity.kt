@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.vitorhr.gorestaurant.databinding.ActivitySplashBinding
-import com.vitorhr.gorestaurant.ui.MainActivity
 import com.vitorhr.gorestaurant.ui.login.LoginActivity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
